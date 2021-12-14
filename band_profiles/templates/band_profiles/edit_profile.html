@@ -1,0 +1,25 @@
+{% extends "band_profiles/base.html" %}
+{% load bootstrap4 %}
+
+
+{% block page_header %}
+
+    <h1 class="display-2 text-center" style="font-family:'Grenze Gotisch', cursive;">{{ profile.bandName }}</h1>
+
+{% endblock page_header %}
+
+
+{% block content %}
+
+<h2 class="mb-5">Edit Profile:</h2>
+
+<form action="{% url 'band_profiles:edit_profile' profile.id %}" method='post' class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+        {% buttons %}
+            <button name="submit" style="margin-bottom:40px;" class="btn btn-primary">Save Changes</button>
+        {% endbuttons %}
+</form>
+
+{% endblock content %}
+

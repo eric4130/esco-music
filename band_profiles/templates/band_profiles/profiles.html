@@ -1,0 +1,51 @@
+{% extends "band_profiles/base.html" %} {% block page_header %}
+
+<h1
+  class="display-3 text-center"
+  style="font-family: 'IM Fell English SC', serif"
+>
+  Band Profile Catalog
+</h1>
+
+{% endblock page_header %} {% block content %}
+
+<h3 class="text-center">
+  <a
+    class="btn btn-lg btn-primary mt-n5"
+    href="{% url 'band_profiles:new_profile' %}"
+    role="button"
+    >Create A New Profile &raquo;</a
+  >
+</h3>
+
+<br />
+
+<div class="container-fluid">
+<div class="col-12 col-lg-6 offset-lg-3">
+{% for profile in profiles %}
+<div class="card-group" style="margin-bottom: 20px;">
+  <div class="card" style="background-color: rgb(255, 255, 255);">
+    <div class="card-body text-center mt-n2">
+      <p class="card-text" style="font-size: 50px">
+        <a
+          style="font-family: 'Grenze Gotisch', cursive"
+          class="text-body"
+          href="{% url 'band_profiles:profile' profile.id %}"
+          >{{ profile.bandName }}</a
+        >
+      </p>
+    </div>
+    <img
+      src="{{ profile.bandImage.url }}"
+      class="card-img-bottom"
+      alt="Band Picture"
+    />
+  </div>
+</div>
+{% empty %}
+<h4 class="text-center">No bands have been added yet!</h4>
+{% endfor %} 
+</div>
+</div>
+
+{% endblock content %}

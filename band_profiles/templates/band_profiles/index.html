@@ -1,0 +1,32 @@
+{% extends "band_profiles/base.html" %} {% block page_header %}
+
+ <div class="container-fluid">
+<div
+  class="jumbotron px-auto mx-auto text-body"
+  style="background-color: rgba(255,255,255,1.0"
+>
+  <h3
+    class="display-4 text-center"
+    style="font-family: 'IM Fell English SC', serif"
+  >
+    <i class="fas fa-music mr-2"></i> Connect the<br />
+    Music World<i class="fas fa-globe ml-4"></i>
+  </h3>
+   <p class="lead">
+    Make your own band profile and tell people about your sound. Then, upload
+    some pictures and songs from your roster. View all the other band profiles,
+    and see the contact information link on each profile, in order to arrange
+    jams or meet-ups...the next steps are up to you!
+  </p>
+  <div class="text-center mt-5 mb-n3">
+    <a
+      class="btn btn-lg btn-primary"
+      href="{% url 'users:register' %}"
+      role="button"
+      >Register &raquo;</a
+    >
+  </div>
+</div>
+</div>
+
+{% endblock page_header %}

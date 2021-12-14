@@ -1,0 +1,32 @@
+{% extends "band_profiles/base.html" %} {% block page_header %}
+
+<h1
+  class="display-2 text-center"
+  style="font-family: 'Grenze Gotisch', cursive"
+>
+  {{ profile.bandName }}
+</h1>
+
+{% endblock page_header %} {% block content %}
+
+<img
+  src="{{ profile.bandImage.url }}"
+  class="img-fluid rounded mx-auto d-block mt-n5"
+  style="width: 800px; height: auto"
+  alt="Band Picture"
+/>
+
+<br />
+
+<div class="text-center">
+  <h5>{{ profile.bandSummary }}</h5>
+  <a
+    class="btn btn-lg btn-primary mt-3"
+    style="margin-bottom: 40px"
+    href="{% url 'band_profiles:edit_profile' profile.id %}"
+    role="button"
+    >Edit Profile &raquo;</a
+  >
+</div>
+
+{% endblock content %}

@@ -1,0 +1,114 @@
+{% load bootstrap4 %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap 4 -->
+    {% bootstrap_css %} {% bootstrap_javascript jquery='full' %}
+    <!-- Font links -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS stylesheet -->
+    <link type="text/css" rel="stylesheet" href="{% static 'style.css' %}" />
+    <!-- FA6 Icons -->
+    <script
+      src="https://kit.fontawesome.com/0ddac47932.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Title Bar and Icon -->
+    <title>EsCo Music</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'music.ico' %}"
+    />
+  </head>
+  <body style="background-color:#B40000;" onload="updateClock(); setInterval('updateClock()', 1000 )">
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-md navbar-dark mb-4 fixed-top">
+      <a class="navbar-brand text-white" href="{% url 'band_profiles:index' %}"
+        >EsCo Music</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link text-white"
+              href="{% url 'band_profiles:profiles' %}"
+              >Band Profiles</a
+            >
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <span class="navbar-text text-white mr-3"
+              >Logged in as: {{ user.username }}</span
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'users:logout' %}"
+              >Log Out</a
+            >
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'users:register' %}"
+              >Register</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'users:login' %}"
+              >Log In</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main role="main" class="container pt-5 mt-4">
+      <div class="pb-2 mb-5 border-bottom">
+        {% block page_header %}{% endblock page_header %}
+      </div>
+      <div class="pt-3 pb-5 mb-5">
+        {% block content %}{% endblock content %}
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="pt-3 text-white fixed-bottom">
+      <p class="text-center" style="margin-bottom: 0px;"><span id="clock">&nbsp;</span></p>
+      <p class="text-center" style="margin-bottom: 0px">Copyright &#169; 2021</p>
+      <p class="text-center">EsCo Music, Inc.</p>
+    </footer>
+
+  <!-- Static Clock JS -->
+    <script src="{% static 'clock.js' %}"></script>
+  
+  </body>
+</html>
