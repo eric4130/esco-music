@@ -1,1 +1,0 @@
-web: gunicorn EscoMusic.wsgi --log-file - 

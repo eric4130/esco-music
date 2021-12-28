@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'eric4130.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -129,7 +129,6 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # new static folder for favicons
 
 # Media files
 
@@ -140,11 +139,3 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')  # new folder for media
 # my settings
 LOGIN_URL = 'users:login'
 
-#Heroku settings
-import django_heroku
-django_heroku.settings(locals())
-
-if os.environ.get('DEBUG') == 'TRUE':
-    DEBUG = True
-elif os.environ.get('DEBUG') == 'FALSE':
-    DEBUG = False
